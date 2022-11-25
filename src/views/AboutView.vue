@@ -3,30 +3,32 @@
   <div>
     <h1 class="mb-6">This is a random Blog page</h1>
   </div>
-  <div v-for="item in listItems" class="justify-center flex flex-column text-center">
-    <h5> ID: {{ item.id }}</h5>
-    <h2> Title: {{ item.title }}</h2>
-    <h3> Body: {{ item.body }}</h3>
+  <div v-if="quote" class="justify-center flex flex-column text-center">
+    <h5> ID: {{ quote.id }}</h5>
+    <h2> Title: {{ quote.title }}</h2>
+    <h3> Body: {{ quote.body }}</h3>
   </div>
-  <button @click="getData()" class="bg-orange-500">Get a new blog</button>
+  <button @click="getData" class="bg-orange-500">Get a new blog</button>
   </div>
 
 </template>
 
 <script setup>
 import {ref} from 'vue'
-const id = ref(0)
-const title = ref('hallo')
-const body = ref('random blogs')
+let id = ref(0)
+let title = ref('hallo')
+let body = ref('random blogs')
 const listItems = ref([])
+let quote = ref(null)
 
 async function getData(){
   const api = await fetch('https://jsonplaceholder.typicode.com/posts')
   const finalApi = await api.json()
-  listItems.value = finalApi
+  const index = Math.floor(Math.random()*finalApi.length)
+  quote.value = finalApi[index]
+ 
   
 }
-
 </script>
 
 <style>
