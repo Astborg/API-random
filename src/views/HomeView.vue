@@ -1,11 +1,12 @@
 <template>
   <div class="about">
   <div>
-    <h1 class="mb-6">This is a random Quote page</h1>
+    <h1 class="mb-6">This is a random Quote</h1>
   </div>
   <div v-if="quote" class="justify-center flex flex-column text-center">
-    <h5> ID: {{ quote.id }}</h5>
-    <h3> Comment: {{ quote.body }}</h3>
+    <h2> {{ quote }}</h2>
+    <h4>- Kanye West</h4>
+
   </div>
   <button @click="getData" class="bg-orange-500">Get a new quote</button>
   </div>
@@ -14,19 +15,19 @@
 
 <script setup>
 import {ref} from 'vue'
-let id = ref(0)
-let body = ref('random blogs')
-const listItems = ref([])
-let quote = ref(null)
+import axios from 'axios'
 
-async function getData(){
-  const api = await fetch('https://jsonplaceholder.typicode.com/comments')
-  const finalApi = await api.json()
-  const index = Math.floor(Math.random()*finalApi.length)
-  quote.value = finalApi[index]
- 
-  
+let quote = ref('')
+
+function getData(){
+  axios.get('https://api.kanye.rest/')
+  .then(response =>{
+    quote.value = response.data.quote
+  })
 }
+
+  
+
 </script>
 
 <style>
