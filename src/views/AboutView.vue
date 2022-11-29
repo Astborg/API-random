@@ -1,15 +1,17 @@
 <template>
-  <div class="about">
+  <div class="justify center m-14">
   <div>
-    <h1 class="mb-6">This is a random Blog page</h1>
+    <h1 class="m-10 font-bold text-center text-xl">This is a random Blog page</h1>
   </div>
-  <div v-if="quote" class="justify-center flex flex-column text-center">
-    <h5> ID: {{ quote.id }}</h5>
-    <h2> Title: {{ quote.title }}</h2>
-    <h3> Body: {{ quote.body }}</h3>
+  <div v-if="quote" class="display-block text-center">
+    <h5 class="m-2"><strong>ID: </strong> {{ quote.id }}</h5>
+    <h2><strong>Title:  {{ quote.title }} </strong></h2>
+    <h3 class="m-2"><strong>Body: </strong> {{ quote.body }}</h3>
   </div>
-  <button @click="getData" class="bg-orange-500">Get a new blog</button>
-  </div>
+  <div class="text-center">
+  <button @click="getData" class=" bg-orange-500 mt-8 font-semibold border-none rounded-lg p-4">Get a new blog</button>
+</div>
+</div>
 
 </template>
 
@@ -30,14 +32,3 @@ async function getData(){
   
 }
 </script>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-</style>
