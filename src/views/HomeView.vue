@@ -1,7 +1,7 @@
 <template>
   <div class="about">
   <div>
-    <h1 class="m-10 font-bold text-center text-xl">This is a random Quote</h1>
+    <h1 class="m-10 font-bold text-center text-xl">This is a random Quote page by Kanye West</h1>
   </div>
   <div v-if="quote" class="display-block text-center">
     <h2><strong class="text-xl">"</strong>  {{ quote }}<strong class="text-xl">"</strong>  </h2>
